@@ -1,4 +1,6 @@
 const allplayers =() =>{
+    document.getElementById('spinner').style.display="block";
+
     document.getElementById('player-container').innerHTML="";
  
     const inputValue = document.getElementById('input-box').value;
@@ -7,11 +9,18 @@ const allplayers =() =>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>showPlayersData(data.player));
-    
+
     document.getElementById('input-box').value="";
     document.getElementById('ditels-container').innerHTML="";
 }
 const showPlayersData =(players)=>{
+    if(players){
+        document.getElementById('spinner').style.display="none";
+
+    }
+    else{
+        document.getElementById('spinner').style.display="block"; 
+    }
     for(const player of players){
         const parent = document.getElementById('player-container');
         const div = document.createElement('div');
